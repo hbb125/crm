@@ -1,9 +1,12 @@
 //配置请求路径
-axios.defaults.baseURL = 'http://localhost:8888';
-//以表单的形式扔给服务器
+axios.defaults.baseURL = 'http://127.0.0.1:8888';
+//配置为true后台的请求都会带上cookie
+axios.defaults.withCredentials = true;
+//以表单的形式扔给服务器d
 axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded';
 axios.defaults.transformRequest = function (data) {
 	if (!data) return data;
+	// console.log(data);
 	let result = '';
 	for (let attr in data) {
 		if (!data.hasOwnProperty(attr)) break;
