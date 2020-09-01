@@ -3,7 +3,7 @@ $(function () {
 	let $plan = $.Callbacks();
 	let $navBoxList = $('.navBox>a');
 	let $itemBoxList = null;
-	
+	init();
 	$plan.add((power) => {
 		// console.log(power);
 		// userhandle|departhandle|jobhandle|customerall
@@ -58,8 +58,8 @@ $(function () {
 				  客户管理
 		      </h3>
 			  <nav class="item">
-				  <a href="page/customerlist.html" target="iframeBox">客户列表</a>
-				  <a href="page/customerlist.html" target="iframeBox">全部客户</a>
+				  <a href="page/customerlist.html?lx=my" target="iframeBox">客户列表</a>
+				  <a href="page/customerlist.html?lx=all" target="iframeBox">全部客户</a>
 				  <a href="page/customeradd.html" target="iframeBox">新增客户</a>
 			  </nav>
 		   </div>
@@ -78,19 +78,19 @@ $(function () {
 			// console.log(text);
 			return text === '客户管理';
 		});
-		let $group2 = $itemBoxList.filter((_,item) => {
+		let $group2 = $itemBoxList.filter((_, item) => {
 			let text = $(item).attr('text')
-            return /^(员工管理|部门管理|职务管理)/.test(text);
-		})
+			return /^(员工管理|部门管理|职务管理)/.test(text);
+		});
 		//控制哪一组显示
-        if (index == 0) {
-			$group1.css('display','block')
-			$group2.css('display','none')
+		if (index == 0) {
+			$group1.css('display', 'block')
+			$group2.css('display', 'none')
 		} else if (index == 1) {
-			$group1.css('display','none')
-			$group2.css('display','block')
+			$group1.css('display', 'none')
+			$group2.css('display', 'block')
 
-		}		
+		}
 	}
 	//实现tab选项卡
 	$plan.add(power => {
@@ -99,12 +99,12 @@ $(function () {
 		handGroup(initIndex)
 		$navBoxList.click(function () {
 			let index = $(this).index();
-            let text = $(this).html().trim();
+			let text = $(this).html().trim();
 			if (text === '客户管理' && !/customerall/.test(power) || (text === '组织结构') && !/userhandle|departhandle|jobhandle/.test(power)) {
 				alert('你没有权限访问~~')
 				return;
 			}
-			if(index == initIndex) return;
+			if (index == initIndex) return;
 			$(this).addClass('active').siblings().removeClass('active');
 			handGroup(index)
 			initIndex = index;
@@ -114,7 +114,7 @@ $(function () {
 	$plan.add(power => {
 		let url = 'page/customerlist.html';
 		if (power.includes('customerall')) {
-			$('.iframeBox').attr('src',url);
+			$('.iframeBox').attr('src', url);
 		}
 	})
 	//实现用户信息
@@ -123,12 +123,11 @@ $(function () {
 		$('.baseBox>span').html(`你好, ${baseInfo.name || ''}`);
 	})
 	//渲染用户信息和实现登录
-	init()
 	async function init() {
 		//判断用户是否登录
 		let result = await axios.get('/user/login')
 		// console.log(result);
-		if (result.code != 0) {
+		if (result.code !== 0) {
 			alert('你还没有登陆，请先登陆...')
 			window.location.href = 'login.html';
 			return;
