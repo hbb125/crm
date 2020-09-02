@@ -23,6 +23,7 @@ $(function () {
 		}
 		alert('编辑失败,网络不给力...')
 		userId = null;
+		return;
 	}
 	initDeptAndJob();
 	//完成部门 职务的渲染
