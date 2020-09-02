@@ -53,12 +53,12 @@ $(function () {
 		//失去焦点，对数据进行校验 
 		let val = $('.username').val().trim()
 		if (val.length == 0) {
-			$('.spanusername').html('此项为必填项~')
+			$('.spanusername').html('此项为必填项~').css('color', 'red')
 			return false;
 		}
 		//用户名必须为(2-10)哥汉字
 		if (!/^[\u4e00-\u9fa5]{2,10}$/.test(val)) {
-			$('.spanusername').html('名字必须为2~10个汉字~')
+			$('.spanusername').html('名字必须为2~10个汉字~').css('color', 'red')
 			return false;
 		}
 		$('.spanusername').html('用户名正确~').css('color', 'blue')
@@ -70,11 +70,11 @@ $(function () {
 	function checkemail() {
 		let val = $('.useremail').val().trim();
 		if (val.length == 0) {
-			$('.spanuseremail').html('此项为必填项~');
+			$('.spanuseremail').html('此项为必填项~').css('color', 'red')
 			return false;
 		}
 		if (!/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/.test(val)) {
-			$('.spanuseremail').html('请输入正确的邮箱格式~')
+			$('.spanuseremail').html('请输入正确的邮箱格式~').css('color', 'red')
 			return false;
 		}
 		$('.spanuseremail').html('邮箱格式正确~').css('color', 'blue')
@@ -85,11 +85,11 @@ $(function () {
 	function checkphone() {
 		let val = $('.userphone').val().trim();
 		if (val.length == 0) {
-			$('.spanuserphone').html('此项为必填项~')
+			$('.spanuserphone').html('此项为必填项~').css('color', 'red')
 			return false;
 		}
 		if (!(/^1[3456789]\d{9}$/.test(val))) {
-			$('.spanuserphone').html('请输入正确的手机号格式~')
+			$('.spanuserphone').html('请输入正确的手机号格式~').css('color', 'red')
 			return false;
 		}
 		$('.spanuserphone').html('手机号格式正确~').css('color', 'blue')

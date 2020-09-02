@@ -1,6 +1,6 @@
 $(function () {
 	let lx = 'my';
-	let limit = 8;
+	let limit = 10;
 	let page = 1;
 	let totalPage = 1;
 	let total = 0;
@@ -27,6 +27,7 @@ $(function () {
 
 		result = result.data;
 		let str = ``;
+
 		result.forEach(item => {
 			let {
 				id,
@@ -54,10 +55,11 @@ $(function () {
 			 <td class="w14" customerId='${id}'>
 						<a href="javascript:;" >编辑</a>
 						<a href="javascript:;" >删除</a>
-						<a href="javascript:;">回访记录</a>
+						<a href="visit.html">回访记录</a>
 			 </td>
 			 </tr>
 			`
+
 		});
 		$('tbody').html(str);
 		if (totalPage > 1) {
@@ -102,15 +104,17 @@ $(function () {
 	})
 
 	//实现 编辑 删除 回访
-	$('tbody').on('click', 'a',async e => {
+	$('tbody').on('click', 'a',async function (e) {
 		let target = e.target,
 			tag = target.tagName,
-			text = target.innerHTML;
+			text = target.innerHTML.trim();
 		// console.log(target, tag, text);
 		if (tag === 'A') {
 			if (text == '编辑') {
-				
-				console.log('编辑');
+				let id = $(this).parent().attr('customerId');
+				// console.log(id);
+				window.location.href = 'customeradd.html?id=' + id;
+				return;
 			}
 			if (text == '删除') {
 				let flag = confirm('你确定要删除')
@@ -119,9 +123,9 @@ $(function () {
 				console.log(customerId);
 				let result = await axios.get('/customer/delete', { params: { customerId } })
 				if (result.code == 0) {
-				   alert('删除成功')
-				   $(target).parent().parent().remove()
-				   return;
+					alert('删除成功')
+					$(target).parent().parent().remove()
+					return;
 				}
 			}
 			if (text == '回访记录') {

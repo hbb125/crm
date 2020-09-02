@@ -27,8 +27,8 @@
 		<div class="form">
 			<div class="inpBox">
 				<span>性别</span>
-				<input type="radio" name="sex" checked><label for="">男</label>
-				<input type="radio" name="sex"><label for="">女</label>
+				<input type="radio" name="sex" id="man" checked><label for="">男</label>
+				<input type="radio" name="sex" id="woman"><label for="">女</label>
 			</div>
 			<span></span>
 		</div>
@@ -68,7 +68,7 @@
 		<div class="form">
 			<div class="inpBox">
 				<span>类型</span>
-				<select>
+				<select class="type">
 					<option value="重点客户">重点客户</option>
 					<option value="一般客户">一般客户</option>
 					<option value="放弃客户">放弃客户</option>
@@ -80,7 +80,7 @@
 		<div class="form">
 			<div class="inpBox">
 				<span>客户地址</span>
-				<textarea></textarea>
+				<textarea class="address"></textarea>
 			</div>
 			<span></span>
 		</div>
@@ -88,7 +88,11 @@
 		<button class="submit">确认提交</button>
 	</div>
 	<!-- IMPORT JS -->
-
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/axios.min.js"></script>
+	<script src="../js/axios.defaults.js"></script>
+	<script src="../js/utils.js"></script>
+	<script src="../js/customeradd.js"></script>
 </body>
 
 </html>
