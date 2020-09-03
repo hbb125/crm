@@ -137,7 +137,6 @@ $(function () {
 			window.location.href = './userlist.html'
 			return;
 		}
-
 	})
 
 })

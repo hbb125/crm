@@ -120,7 +120,7 @@ $(function () {
 				let flag = confirm('你确定要删除')
 				if (!flag) return;
 				let customerId = $(target).parent().attr('customerId');
-				console.log(customerId);
+				// console.log(customerId);
 				let result = await axios.get('/customer/delete', { params: { customerId } })
 				if (result.code == 0) {
 					alert('删除成功')

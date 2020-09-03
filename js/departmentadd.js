@@ -26,7 +26,9 @@ $(function () {
 	function checkDepartmentName() {
 		let val = $('.departmentName').val().trim();
 		if (val.length == 0) {
-			alert('此项为必填项~')
+			// alert('此项为必填项~')
+			$('.departmentName').parent().siblings().html('此项为必填项~~').css('color', 'red')
+
 			return false;
 		}
 		//用户名必须为(2-10)哥汉字
@@ -42,7 +44,8 @@ $(function () {
 	function checkDesc() {
 		let val = $('.desc').val().trim();
 		if (val.length == 0) {
-			alert('此项为必填项~')
+			// alert('此项为必填项~')
+			$('.desc').parent().siblings().html('此项为必填项~~').css('color', 'red')
 			return false;
 		}
 		//描述必须为(2-100)哥汉字
