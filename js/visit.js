@@ -1,4 +1,15 @@
 $(function () {
+	//校验描述
+	function checkDesc() {
+	  let val = $('.visitText').val().trim();
+		if (!/^[\u4e00-\u9fa5]{2,100}$/.test(val)) {
+			$('.visitText').parent().siblings().html('必须为2~100个汉字~').css('color', 'red')
+			return false;
+		}
+		$('.visitText').parent().siblings().html('格式正确~').css('color', 'blue')
+	}
+	$('.visitText').blur(checkDesc);
+
 	let params = window.location.href.queryURLParams();
 	let customerId = params.id;
 	getVisitList()
