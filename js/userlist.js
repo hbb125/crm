@@ -71,7 +71,7 @@ $(function () {
 	//实现编辑 删除 重置密码
 	$('tbody').on('click', 'a', async function (e) {
 		let target = e.target,
-			tag = target.tagName;
+		tag = target.tagName;
 		text = target.innerHTML.trim();
 		// console.log(target);
 		//实现编辑
@@ -153,7 +153,7 @@ $(function () {
 			let userId = arr[++index]
 			if (index >= arr.length) {
 				alert('已成功删除员工~')
-				showUserList();	
+				showUserList();
 				return;
 			}
 			let result = await axios.get('/user/delete', { params: { userId } })

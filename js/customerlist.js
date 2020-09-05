@@ -55,7 +55,7 @@ $(function () {
 			 <td class="w14" customerId='${id}'>
 						<a href="javascript:;" >编辑</a>
 						<a href="javascript:;" >删除</a>
-						<a href="visit.html">回访记录</a>
+						<a href="#">回访记录</a>
 			 </td>
 			 </tr>
 			`
@@ -129,7 +129,10 @@ $(function () {
 				}
 			}
 			if (text == '回访记录') {
-				console.log('回访');
+				let id = $(this).parent().attr('customerId');
+				window.location.href = 'visit.html?id=' + id;
+				return;
+				// console.log('回访');
 			}
 		}
 	})
